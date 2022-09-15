@@ -75,13 +75,6 @@
           <CryptographicKeys>
             <Key Id="client_secret" StorageReferenceId="B2C_1A_AADMultiTenantAppSecret"/>
           </CryptographicKeys>
-          <!-- [FIX1] START - Added claims
-          <InputClaims>
-            <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name"/>
-            <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="family_name"/>
-            <InputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
-          </InputClaims>
-          [FIX1] END -->
           <OutputClaims>
             <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="oid"/>
             <OutputClaim ClaimTypeReferenceId="tenantId" PartnerClaimType="tid"/>
