@@ -17,13 +17,13 @@
 
   <RelyingParty>
     <DefaultUserJourney ReferenceId="AADMultiTenantSignUpSignIn" />
-      <UserJourneyBehaviors>
-        <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="1d94474a-55f8-46f7-847e-bb965400613f" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
-      </UserJourneyBehaviors>
     <Endpoints>
       <!--points to refresh token journey when app makes refresh token request-->
       <Endpoint Id="Token" UserJourneyReferenceId="RedeemRefreshToken" />
     </Endpoints>
+    <UserJourneyBehaviors>
+      <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="1d94474a-55f8-46f7-847e-bb965400613f" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
+    </UserJourneyBehaviors>
     <TechnicalProfile Id="PolicyProfile">
       <DisplayName>PolicyProfile</DisplayName>
       <Protocol Name="OpenIdConnect" />
