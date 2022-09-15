@@ -8,7 +8,8 @@
   PolicyId="B2C_1A_signup_signin_common"
   PublicPolicyUri="http://b2cidamdev.onmicrosoft.com/B2C_1A_signup_signin_common"
   DeploymentMode="Development"
-  UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights">
+  UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
+>
 
   <BasePolicy>
     <TenantId>b2cidamdev.onmicrosoft.com</TenantId>
