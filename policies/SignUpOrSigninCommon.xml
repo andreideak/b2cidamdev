@@ -6,7 +6,9 @@
   PolicySchemaVersion="0.3.0.0"
   TenantId="b2cidamdev.onmicrosoft.com"
   PolicyId="B2C_1A_signup_signin_common"
-  PublicPolicyUri="http://b2cidamdev.onmicrosoft.com/B2C_1A_signup_signin_common">
+  PublicPolicyUri="http://b2cidamdev.onmicrosoft.com/B2C_1A_signup_signin_common"
+  DeploymentMode="Development"
+  UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights">
 
   <BasePolicy>
     <TenantId>b2cidamdev.onmicrosoft.com</TenantId>
@@ -15,6 +17,9 @@
 
   <RelyingParty>
     <DefaultUserJourney ReferenceId="AADMultiTenantSignUpSignIn" />
+      <UserJourneyBehaviors>
+        <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="1d94474a-55f8-46f7-847e-bb965400613f" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
+      </UserJourneyBehaviors>
     <Endpoints>
       <!--points to refresh token journey when app makes refresh token request-->
       <Endpoint Id="Token" UserJourneyReferenceId="RedeemRefreshToken" />
