@@ -4,11 +4,11 @@
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
   PolicySchemaVersion="0.3.0.0"
+  DeploymentMode="Development"
+  UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
   TenantId="b2cidamdev.onmicrosoft.com"
   PolicyId="B2C_1A_signup_signin_common"
-  PublicPolicyUri="http://b2cidamdev.onmicrosoft.com/B2C_1A_signup_signin_common"
-  DeploymentMode="Development"
-  UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights">
+  PublicPolicyUri="http://b2cidamdev.onmicrosoft.com/B2C_1A_signup_signin_common">
 
   <BasePolicy>
     <TenantId>b2cidamdev.onmicrosoft.com</TenantId>
