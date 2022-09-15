@@ -1,0 +1,31 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  clientId: fb4b237e-6c65-4f01-9afc-5155b94e7957
+  tenant: b2cidamdev.onmicrosoft.com
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: 'Upload TrustFrameworkBase Policy'
+      uses: azure-ad-b2c/deploy-trustframework-policy@v3
+      with:
+        folder: "./policies"
+        files: "TrustFrameworkBase.xml,TrustFrameworkLocalization.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml,SignUpOrSigninCommon.xml,ProfileEdit.xml,PasswordReset.xml"
+        tenant: ${{ env.tenant }}
+        clientId: ${{ env.clientId }}
+        clientSecret: ${{ secrets.clientSecret }}
