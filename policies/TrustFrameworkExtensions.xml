@@ -136,7 +136,7 @@
   </ClaimsProviders>
 
   <UserJourneys>
-
+    <!-- Custom User Journey for Multi-Tenant SignUp/SignIn -->
     <UserJourney Id="AADMultiTenantSignUpSignIn">
       <OrchestrationSteps>
 
@@ -257,6 +257,7 @@
       </OrchestrationSteps>
       <ClientDefinition ReferenceId="DefaultWeb" />
     </UserJourney>
+    <!-- End of Custom User Journey for Multi-Tenant SignUp/SignIn -->
 	
 	</UserJourneys>
 
