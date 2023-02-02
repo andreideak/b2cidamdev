@@ -134,7 +134,7 @@
             <Item Key="IncludeClaimResolvingInClaimsHandling">true</Item>
           </Metadata>
           <CryptographicKeys>
-            <Key Id="BearerAuthenticationToken" StorageReferenceId="B2CLabAPIToken" />
+            <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_B2CLabAPIToken" />
           </CryptographicKeys>
           <OutputClaims>
             <OutputClaim ClaimTypeReferenceId="CustomAPI-id" PartnerClaimType="id" />
