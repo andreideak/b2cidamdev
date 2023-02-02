@@ -35,6 +35,13 @@
         <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
         <OutputClaim ClaimTypeReferenceId="identityProvider" />
         <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+        <!-- START of Issue custom Attributes received from API -->
+        <OutputClaim ClaimTypeReferenceId="CustomAPI-id" PartnerClaimType="id" />
+        <OutputClaim ClaimTypeReferenceId="CustomAPI-username" PartnerClaimType="name" />
+        <OutputClaim ClaimTypeReferenceId="CustomAPI-email" PartnerClaimType="email" />
+        <OutputClaim ClaimTypeReferenceId="CustomAPI-gender" PartnerClaimType="gender" />
+        <OutputClaim ClaimTypeReferenceId="CustomAPI-status" PartnerClaimType="status" />
+        <!-- START of Issue custom Attributes received from API -->
       </OutputClaims>
       <SubjectNamingInfo ClaimType="sub" />
     </TechnicalProfile>
