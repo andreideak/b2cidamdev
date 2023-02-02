@@ -13,7 +13,31 @@
     <PolicyId>B2C_1A_TrustFrameworkLocalization</PolicyId>
   </BasePolicy>
  <BuildingBlocks>
-
+    <ClaimsSchema>
+      <!-- START of Claims for Custom API -->
+        <!-- The claim socialIdpUserId has been renamed to issuerUserId -->
+      <ClaimType Id="CustomAPI-id">
+        <DisplayName>Custom API ID</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="CustomAPI-username">
+        <DisplayName>Custom API Username</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="CustomAPI-email">
+        <DisplayName>Custom API Email</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="CustomAPI-gender">
+        <DisplayName>Custom API Gender</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <ClaimType Id="CustomAPI-status">
+        <DisplayName>Custom API Status</DisplayName>
+        <DataType>string</DataType>
+      </ClaimType>
+      <!-- END of Claims for Custom API -->
+    </ClaimsSchema>
   </BuildingBlocks>
 
   <ClaimsProviders>
@@ -113,11 +137,11 @@
             <Key Id="BearerAuthenticationToken" StorageReferenceId="B2CLabAPIToken" />
           </CryptographicKeys>
           <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="API-Id" PartnerClaimType="id" />
-            <OutputClaim ClaimTypeReferenceId="API-Username" PartnerClaimType="name" />
-            <OutputClaim ClaimTypeReferenceId="API-Email" PartnerClaimType="email" />
-            <OutputClaim ClaimTypeReferenceId="API-Gender" PartnerClaimType="gender" />
-            <OutputClaim ClaimTypeReferenceId="API-Status" PartnerClaimType="status" />
+            <OutputClaim ClaimTypeReferenceId="CustomAPI-id" PartnerClaimType="id" />
+            <OutputClaim ClaimTypeReferenceId="CustomAPI-username" PartnerClaimType="name" />
+            <OutputClaim ClaimTypeReferenceId="CustomAPI-email" PartnerClaimType="email" />
+            <OutputClaim ClaimTypeReferenceId="CustomAPI-gender" PartnerClaimType="gender" />
+            <OutputClaim ClaimTypeReferenceId="CustomAPI-status" PartnerClaimType="status" />
           </OutputClaims>
           <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
         </TechnicalProfile>

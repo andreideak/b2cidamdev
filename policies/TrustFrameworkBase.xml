@@ -344,6 +344,7 @@
         <UserInputType>TextBox</UserInputType>
       </ClaimType>
 
+
     </ClaimsSchema>
 
     <ClaimsTransformations>
