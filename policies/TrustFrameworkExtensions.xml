@@ -18,7 +18,7 @@
         <!-- The claim socialIdpUserId has been renamed to issuerUserId -->
       <ClaimType Id="CustomAPI-id">
         <DisplayName>Custom API ID</DisplayName>
-        <DataType>string</DataType>
+        <DataType>int</DataType>
       </ClaimType>
       <ClaimType Id="CustomAPI-username">
         <DisplayName>Custom API Username</DisplayName>
