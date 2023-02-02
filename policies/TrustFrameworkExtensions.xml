@@ -95,7 +95,35 @@
       </TechnicalProfiles>
     </ClaimsProvider>
     <!-- End of Claim provider used for AAD Multi-Tenant -->
-    
+
+    <!-- START of Custom Technical Profile for REST API Query -->
+    <ClaimsProvider>
+      <DisplayName>CustomAPI</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="REST-GET-UserData">
+          <DisplayName>Get user data</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="ServiceUrl">https://gorest.co.in/public/v2/users/207739</Item>
+            <Item Key="AuthenticationType">Bearer</Item>
+            <Item Key="SendClaimsIn">Url</Item>
+            <Item Key="IncludeClaimResolvingInClaimsHandling">true</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="BearerAuthenticationToken" StorageReferenceId="B2CLabAPIToken" />
+          </CryptographicKeys>
+          <OutputClaims>
+            <InputClaim ClaimTypeReferenceId="API-Id" PartnerClaimType="id" />
+            <InputClaim ClaimTypeReferenceId="API-Username" PartnerClaimType="APIusername" />
+            <InputClaim ClaimTypeReferenceId="API-Email" PartnerClaimType="APIEmail" />
+            <InputClaim ClaimTypeReferenceId="API-Gender" PartnerClaimType="APIGender" />
+            <InputClaim ClaimTypeReferenceId="API-Status" PartnerClaimType="APIStatus" />
+          </OutputClaims>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <!-- END of Custom Technical Profile for REST API Query -->
   </ClaimsProviders>
 
   <UserJourneys>
@@ -204,7 +232,17 @@
         <!-- Save MFA phone number: The precondition verifies whether the user provided a new number in the 
              previous step. If so, then the phone number is stored in the directory for future authentication 
              requests. -->
+
+        <!-- START of Invoking Custom API -->
         <OrchestrationStep Order="8" Type="ClaimsExchange">
+          <ClaimsExchanges>
+            <ClaimsExchange Id="RESTGetUserData" TechnicalProfileReferenceId="REST-GET-UserData" />
+          </ClaimsExchanges>
+        </OrchestrationStep>
+        <!-- END of Invoking Custom API -->
+
+
+        <OrchestrationStep Order="9" Type="ClaimsExchange">
           <Preconditions>
             <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
               <Value>newPhoneNumberEntered</Value>
