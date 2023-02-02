@@ -113,11 +113,11 @@
             <Key Id="BearerAuthenticationToken" StorageReferenceId="B2CLabAPIToken" />
           </CryptographicKeys>
           <OutputClaims>
-            <InputClaim ClaimTypeReferenceId="API-Id" PartnerClaimType="id" />
-            <InputClaim ClaimTypeReferenceId="API-Username" PartnerClaimType="APIusername" />
-            <InputClaim ClaimTypeReferenceId="API-Email" PartnerClaimType="APIEmail" />
-            <InputClaim ClaimTypeReferenceId="API-Gender" PartnerClaimType="APIGender" />
-            <InputClaim ClaimTypeReferenceId="API-Status" PartnerClaimType="APIStatus" />
+            <OutputClaim ClaimTypeReferenceId="API-Id" PartnerClaimType="id" />
+            <OutputClaim ClaimTypeReferenceId="API-Username" PartnerClaimType="name" />
+            <OutputClaim ClaimTypeReferenceId="API-Email" PartnerClaimType="email" />
+            <OutputClaim ClaimTypeReferenceId="API-Gender" PartnerClaimType="gender" />
+            <OutputClaim ClaimTypeReferenceId="API-Status" PartnerClaimType="status" />
           </OutputClaims>
           <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
         </TechnicalProfile>
