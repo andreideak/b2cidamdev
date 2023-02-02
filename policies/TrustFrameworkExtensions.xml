@@ -95,44 +95,7 @@
       </TechnicalProfiles>
     </ClaimsProvider>
     <!-- End of Claim provider used for AAD Multi-Tenant -->
-
-    <!-- Custom Claim Provider for verifying MFA SMS Code -->
-    <ClaimsProvider>
-      <DisplayName>Azure AD Multi-Factor Authentication</DisplayName>
-      <TechnicalProfiles>
-        <!-- Send SMS -->
-        <TechnicalProfile Id="AzureMfa-SendSms">
-          <DisplayName>Send Sms</DisplayName>
-          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-          <Metadata>
-            <Item Key="Operation">OneWaySMS</Item>
-          </Metadata>
-          <InputClaimsTransformations>
-            <InputClaimsTransformation ReferenceId="CombinePhoneAndCountryCode" />
-            <InputClaimsTransformation ReferenceId="ConvertStringToPhoneNumber" />
-          </InputClaimsTransformations>
-          <InputClaims>
-            <InputClaim ClaimTypeReferenceId="userPrincipalName" />
-            <InputClaim ClaimTypeReferenceId="fullPhoneNumber" PartnerClaimType="phoneNumber" />
-          </InputClaims>
-        </TechnicalProfile>
-        <!-- End of Send SMS -->
-        <!-- Verify SMS -->
-        <TechnicalProfile Id="AzureMfa-VerifySms">
-          <DisplayName>Verify Sms</DisplayName>
-          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-          <Metadata>
-              <Item Key="Operation">Verify</Item>
-          </Metadata>
-          <InputClaims>
-              <InputClaim ClaimTypeReferenceId="phoneNumber" PartnerClaimType="phoneNumber" />
-              <InputClaim ClaimTypeReferenceId="verificationCode" />
-          </InputClaims>
-        </TechnicalProfile>
-        <!-- End of Verify SMS -->
-      </TechnicalProfiles>
-    </ClaimsProvider>
-    <!--  End of Custom Claim Provider for verifying MFA SMS Code -->
+    
   </ClaimsProviders>
 
   <UserJourneys>
