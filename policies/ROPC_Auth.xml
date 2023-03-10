@@ -9,7 +9,6 @@
   PublicPolicyUri="http://b2cidamdev.onmicrosoft.com/B2C_1A_ROPC_Auth"
   DeploymentMode="Development"
   UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights">
-  >
 
   <BasePolicy>
     <TenantId>b2cidamdev.onmicrosoft.com</TenantId>
