@@ -16,7 +16,7 @@
     <ClaimsSchema>
       <!-- START of Claims for Custom API -->
         <!-- The claim socialIdpUserId has been renamed to issuerUserId -->
-      <ClaimType Id="CustomAPI-id">
+      <!-- <ClaimType Id="CustomAPI-id">
         <DisplayName>Custom API ID</DisplayName>
         <DataType>int</DataType>
       </ClaimType>
@@ -35,7 +35,7 @@
       <ClaimType Id="CustomAPI-status">
         <DisplayName>Custom API Status</DisplayName>
         <DataType>string</DataType>
-      </ClaimType>
+      </ClaimType> -->
       <!-- END of Claims for Custom API -->
     </ClaimsSchema>
   </BuildingBlocks>
@@ -121,7 +121,7 @@
     <!-- End of Claim provider used for AAD Multi-Tenant -->
 
     <!-- START of Custom Technical Profile for REST API Query -->
-    <ClaimsProvider>
+    <!-- <ClaimsProvider>
       <DisplayName>CustomAPI</DisplayName>
       <TechnicalProfiles>
         <TechnicalProfile Id="REST-GET-UserData">
@@ -146,7 +146,7 @@
           <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
         </TechnicalProfile>
       </TechnicalProfiles>
-    </ClaimsProvider>
+    </ClaimsProvider> -->
     <!-- END of Custom Technical Profile for REST API Query -->
   </ClaimsProviders>
 
@@ -258,15 +258,15 @@
              requests. -->
 
         <!-- START of Invoking Custom API -->
-        <OrchestrationStep Order="8" Type="ClaimsExchange">
+        <!-- <OrchestrationStep Order="8" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="RESTGetUserData" TechnicalProfileReferenceId="REST-GET-UserData" />
           </ClaimsExchanges>
-        </OrchestrationStep>
+        </OrchestrationStep> -->
         <!-- END of Invoking Custom API -->
 
 
-        <OrchestrationStep Order="9" Type="ClaimsExchange">
+        <OrchestrationStep Order="8" Type="ClaimsExchange">
           <Preconditions>
             <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
               <Value>newPhoneNumberEntered</Value>
