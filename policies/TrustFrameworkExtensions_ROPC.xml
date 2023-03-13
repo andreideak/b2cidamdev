@@ -14,29 +14,6 @@
   </BasePolicy>
  <BuildingBlocks>
     <ClaimsSchema>
-      <!-- START of Claims for Custom API -->
-        <!-- The claim socialIdpUserId has been renamed to issuerUserId -->
-      <ClaimType Id="CustomAPI-id">
-        <DisplayName>Custom API ID</DisplayName>
-        <DataType>int</DataType>
-      </ClaimType>
-      <ClaimType Id="CustomAPI-username">
-        <DisplayName>Custom API Username</DisplayName>
-        <DataType>string</DataType>
-      </ClaimType>
-      <ClaimType Id="CustomAPI-email">
-        <DisplayName>Custom API Email</DisplayName>
-        <DataType>string</DataType>
-      </ClaimType>
-      <ClaimType Id="CustomAPI-gender">
-        <DisplayName>Custom API Gender</DisplayName>
-        <DataType>string</DataType>
-      </ClaimType>
-      <ClaimType Id="CustomAPI-status">
-        <DisplayName>Custom API Status</DisplayName>
-        <DataType>string</DataType>
-      </ClaimType>
-      <!-- END of Claims for Custom API -->
       <!-- START of Claims for ROPC flow -->
       <ClaimType Id="logonIdentifier">
         <DisplayName>User name or email address that the user can use to sign in</DisplayName>
@@ -248,35 +225,6 @@
       </TechnicalProfiles>
     </ClaimsProvider>
     <!-- End of Claim provider used for AAD Multi-Tenant -->
-
-    <!-- START of Custom Technical Profile for REST API Query -->
-    <ClaimsProvider>
-      <DisplayName>CustomAPI</DisplayName>
-      <TechnicalProfiles>
-        <TechnicalProfile Id="REST-GET-UserData">
-          <DisplayName>Get user data</DisplayName>
-          <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-          <Metadata>
-            <Item Key="ServiceUrl">https://gorest.co.in/public/v2/users/207739</Item>
-            <Item Key="AuthenticationType">Bearer</Item>
-            <Item Key="SendClaimsIn">Url</Item>
-            <Item Key="IncludeClaimResolvingInClaimsHandling">true</Item>
-          </Metadata>
-          <CryptographicKeys>
-            <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_B2CLabAPIToken" />
-          </CryptographicKeys>
-          <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="CustomAPI-id" PartnerClaimType="id" />
-            <OutputClaim ClaimTypeReferenceId="CustomAPI-username" PartnerClaimType="name" />
-            <OutputClaim ClaimTypeReferenceId="CustomAPI-email" PartnerClaimType="email" />
-            <OutputClaim ClaimTypeReferenceId="CustomAPI-gender" PartnerClaimType="gender" />
-            <OutputClaim ClaimTypeReferenceId="CustomAPI-status" PartnerClaimType="status" />
-          </OutputClaims>
-          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
-        </TechnicalProfile>
-      </TechnicalProfiles>
-    </ClaimsProvider>
-    <!-- END of Custom Technical Profile for REST API Query -->
   </ClaimsProviders>
 
   <UserJourneys>
@@ -386,16 +334,7 @@
              previous step. If so, then the phone number is stored in the directory for future authentication 
              requests. -->
 
-        <!-- START of Invoking Custom API -->
         <OrchestrationStep Order="8" Type="ClaimsExchange">
-          <ClaimsExchanges>
-            <ClaimsExchange Id="RESTGetUserData" TechnicalProfileReferenceId="REST-GET-UserData" />
-          </ClaimsExchanges>
-        </OrchestrationStep>
-        <!-- END of Invoking Custom API -->
-
-
-        <OrchestrationStep Order="9" Type="ClaimsExchange">
           <Preconditions>
             <Precondition Type="ClaimsExist" ExecuteActionsIf="false">
               <Value>newPhoneNumberEntered</Value>
@@ -406,7 +345,7 @@
             <ClaimsExchange Id="AADUserWriteWithObjectId" TechnicalProfileReferenceId="AAD-UserWritePhoneNumberUsingObjectId" />
           </ClaimsExchanges>
         </OrchestrationStep>
-        <OrchestrationStep Order="10" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+        <OrchestrationStep Order="9" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
 
       </OrchestrationSteps>
       <ClientDefinition ReferenceId="DefaultWeb" />
