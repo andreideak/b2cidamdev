@@ -91,6 +91,7 @@
         </TechnicalProfile>
       </TechnicalProfiles>
     </ClaimsProvider>
+  </ClaimsProviders>
 
   <UserJourneys>
     <!-- Custom User Journey for Multi-Tenant SignUp/SignIn -->
